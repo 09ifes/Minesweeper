@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="implemented initial grid display">
+    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="implemented 2d arraylist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Cells.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Cells.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +61,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668427506280</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="implemented grid builder function">
+      <created>1668429938349</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668429938349</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -80,6 +85,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="implemented initial grid display" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented initial grid display" />
+    <MESSAGE value="implemented grid builder function" />
+    <MESSAGE value="implemented 2d arraylist" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented 2d arraylist" />
   </component>
 </project>

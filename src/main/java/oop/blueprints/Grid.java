@@ -31,6 +31,7 @@ public class Grid {
     }
 
     public void gridBuilder(){
+        System.out.print("\n");
         for (int row = 1; row <= this.width; row++){
             for (int column = 1; column <= this.height; column++){
                 // for each coordinate (row, column), gets cell from 2d arraylist
@@ -41,10 +42,39 @@ public class Grid {
         }
     }
 
+    // generates random coordinates
+    public ArrayList randCoords(){
+        Random rand_x = new Random();
+        Random rand_y = new Random();
+        int x = rand_x.nextInt(this.width);
+        int y = rand_y.nextInt(this.height);
+
+        ArrayList<Integer> coords = new ArrayList<>();
+        coords.add(x);
+        coords.add(y);
+        return coords;
+    }
+
     public void setMines(){
-        Random rand = new Random();
-        //for ()
-        rand.nextInt(this.totalCells);
+        ArrayList coords;
+        Cells cell;
+        for (int i = 0; i < 20; i++){
+            coords = this.randCoords();
+            int x = (int) coords.get(0);             // converts from object to int
+            int y = (int) coords.get(1);
+            cell = this.cells[x][y].get(0);
+
+            if (cell.isMine){
+                while (cell.isMine){
+                    coords = this.randCoords();
+                    x = (int) coords.get(0);
+                    y = (int) coords.get(1);
+                    cell = this.cells[x][y].get(0);
+                }
+            }
+            cell.isMine = true;
+        }
+
 
 
     }

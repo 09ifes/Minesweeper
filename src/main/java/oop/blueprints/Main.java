@@ -6,6 +6,7 @@ public class Main {
         Grid grid = new Grid(9, 9);
         grid.setMines();
         //grid.placeFlag(1,2);
+        //grid.blankCell(2,4);
 
 
 

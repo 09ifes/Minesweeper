@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="implemented random coordinate generator and set mine function">
+    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="implemented flag setting function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Cells.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Cells.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" afterDir="false" />
     </list>
@@ -83,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668440641626</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="implemented flag setting function">
+      <created>1668442338201</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668442338201</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,6 +111,7 @@
     <MESSAGE value="implemented grid builder function" />
     <MESSAGE value="implemented 2d arraylist" />
     <MESSAGE value="implemented random coordinate generator and set mine function" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented random coordinate generator and set mine function" />
+    <MESSAGE value="implemented flag setting function" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented flag setting function" />
   </component>
 </project>

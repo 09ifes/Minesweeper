@@ -14,15 +14,21 @@ public class Grid {
         this.width = width;
         this.height = height;
         this.cells = new ArrayList[width][height];
-        for (int row = 1; row <= this.width; row++){
-            for (int column = 1; column <= this.height; column++){
+
+        System.out.print("   ");
+        for (int i = 0; i < this.width; i++){
+            System.out.print(i + "  ");
+        }
+        System.out.print("\n");
+        for (int row = 0; row < this.width; row++){
+            System.out.print(row + "  ");
+            for (int column = 0; column < this.height; column++){
                 // for each coordinate (row, column), creates new cell object, adds to arraylist
                 Cells cell = new Cells(row, column);
 
-                // "row/column - 1" so that user input gets converted to index
-                this.cells[row-1][column-1] = new ArrayList<>();
-                this.cells[row-1][column-1].add(cell);            // adds cell to 2d arraylist
-                cell = this.cells[row-1][column-1].get(0);        // retrieves cell from arraylist
+                this.cells[row][column] = new ArrayList<>();
+                this.cells[row][column].add(cell);            // adds cell to 2d arraylist
+                cell = this.cells[row][column].get(0);        // retrieves cell from arraylist
                 System.out.print(cell.appearance);
             }
             System.out.print("\n");
@@ -32,10 +38,16 @@ public class Grid {
 
     public void gridBuilder(){
         System.out.print("\n");
-        for (int row = 1; row <= this.width; row++){
-            for (int column = 1; column <= this.height; column++){
+        System.out.print("   ");
+        for (int i = 0; i < this.width; i++){
+            System.out.print(i + "  ");
+        }
+        System.out.print("\n");
+        for (int row = 0; row < this.width; row++){
+            System.out.print(row + "  ");
+            for (int column = 0; column < this.height; column++){
                 // for each coordinate (row, column), gets cell from 2d arraylist
-                Cells cell = this.cells[row-1][column-1].get(0);
+                Cells cell = this.cells[row][column].get(0);
                 System.out.print(cell.appearance);
             }
             System.out.print("\n");
@@ -58,8 +70,9 @@ public class Grid {
     public void setMines(){
         ArrayList coords;
         Cells cell;
+        int mineNumber = (this.width * this.height) / 20;     // number of mines - 20%
         // gets coordinates for mines by executing randCoords method x amount of times
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < mineNumber; i++){
             coords = this.randCoords();
             int x = (int) coords.get(0);             // converts from object type to int
             int y = (int) coords.get(1);
@@ -81,9 +94,33 @@ public class Grid {
 
     public void placeFlag(int coord_x, int coord_y){
         Cells cell = this.cells[coord_x][coord_y].get(0);
-        cell.state = "flagged";
-        this.gridBuilder();
+        if (cell.state == "opened"){
+            System.out.println("Cell has already been opened, cannot place flag");
+        }
+        else {
+            cell.state = "flagged";
+            cell.isClickable = false;
+            this.gridBuilder();
+        }
+    }
 
+    public void removeFlag(int coord_x, int coord_y){
+        Cells cell = this.cells[coord_x][coord_y].get(0);
+        if (cell.state == "flagged"){
+            cell.state = "unopened";
+            cell.isClickable = false;
+            this.gridBuilder();
+        }
+        else {
+            System.out.println("There is no flag on this cell");
+        }
+    }
+
+    public void blankCell(int coord_x, int coord_y){
+        Cells cell = this.cells[coord_x][coord_y].get(0);
+        cell.state = "opened";
+        cell.appearance = "0  ";
+        this.gridBuilder();
     }
 
 

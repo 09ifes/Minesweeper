@@ -58,14 +58,16 @@ public class Grid {
     public void setMines(){
         ArrayList coords;
         Cells cell;
+        // gets coordinates for mines by executing randCoords method x amount of times
         for (int i = 0; i < 20; i++){
             coords = this.randCoords();
-            int x = (int) coords.get(0);             // converts from object to int
+            int x = (int) coords.get(0);             // converts from object type to int
             int y = (int) coords.get(1);
             cell = this.cells[x][y].get(0);
 
+            // sets mine variable of cell objects to 'true'
             if (cell.isMine){
-                while (cell.isMine){
+                while (cell.isMine){      // if cell already has mine, randomize coords until cell with no mine is found
                     coords = this.randCoords();
                     x = (int) coords.get(0);
                     y = (int) coords.get(1);
@@ -74,9 +76,26 @@ public class Grid {
             }
             cell.isMine = true;
         }
+        this.gridBuilder();
+    }
 
-
+    public void placeFlag(int coord_x, int coord_y){
+        Cells cell = this.cells[coord_x][coord_y].get(0);
+        cell.state = "flagged";
+        this.gridBuilder();
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

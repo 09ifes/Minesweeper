@@ -5,7 +5,7 @@ public class Main {
 
         Grid grid = new Grid(9, 9);
         grid.setMines();
-        grid.gridBuilder();
+        //grid.placeFlag(1,2);
 
 
 

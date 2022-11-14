@@ -5,6 +5,7 @@ public class Cells {
     String appearance = ".  ";           // how cell will look on screen, default will be ".";
     boolean isFlag = false;
     boolean isClickable = true;
+    boolean isChecked = false;
     int adjacentMinesCount = 0;
     boolean isMine = false;
     int x;

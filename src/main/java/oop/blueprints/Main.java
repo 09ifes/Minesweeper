@@ -7,6 +7,8 @@ public class Main {
         grid.setMines();
         //grid.placeFlag(1,2);
         //grid.blankCell(2,4);
+        //grid.numberedCell(6,8);
+        //grid.showMine(5,5);
 
 
 

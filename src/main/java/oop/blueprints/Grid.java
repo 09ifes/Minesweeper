@@ -91,15 +91,16 @@ public class Grid {
         }
         this.gridBuilder();
     }
-
+    // places flag in cell if cell is unopened/unclickable
     public void placeFlag(int coord_x, int coord_y){
         Cells cell = this.cells[coord_x][coord_y].get(0);
-        if (cell.state == "opened"){
+        if (cell.state == "opened" || cell.isClickable == false){
             System.out.println("Cell has already been opened, cannot place flag");
         }
         else {
             cell.state = "flagged";
             cell.isClickable = false;
+            cell.appearance = "F  ";
             this.gridBuilder();
         }
     }
@@ -108,7 +109,8 @@ public class Grid {
         Cells cell = this.cells[coord_x][coord_y].get(0);
         if (cell.state == "flagged"){
             cell.state = "unopened";
-            cell.isClickable = false;
+            cell.isClickable = true;
+            cell.appearance = ".  ";
             this.gridBuilder();
         }
         else {
@@ -119,8 +121,31 @@ public class Grid {
     public void blankCell(int coord_x, int coord_y){
         Cells cell = this.cells[coord_x][coord_y].get(0);
         cell.state = "opened";
+        cell.isClickable = false;
         cell.appearance = "0  ";
+        this.adjacentChecker();
         this.gridBuilder();
+    }
+
+    public void numberedCell(int coord_x, int coord_y){
+        Cells cell = this.cells[coord_x][coord_y].get(0);
+        cell.state = "opened";
+        cell.isClickable = false;
+        cell.appearance = cell.adjacentMinesCount + "  ";
+        this.gridBuilder();
+    }
+
+    public void showMine(int coord_x, int coord_y){
+        Cells cell = this.cells[coord_x][coord_y].get(0);
+        cell.state = "opened";
+        cell.isClickable = false;
+        cell.appearance = "*  ";
+        this.gridBuilder();
+    }
+
+
+    public void adjacentChecker(){
+
     }
 
 

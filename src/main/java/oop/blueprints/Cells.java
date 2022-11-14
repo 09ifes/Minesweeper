@@ -5,13 +5,13 @@ public class Cells {
     String appearance;
     boolean isFlag;
     int adjacentMinesCount;
-    boolean isBomb;
+    boolean isMine;
     int x;
     int y;
 
     public Cells(int x, int y){
         state = "unopened";         // default state for new cell instances >> "unopened"
-        appearance = ". ";           // how cell will look on screen, default will be "."
+        appearance = ".  ";           // how cell will look on screen, default will be "."
         this.x = x;
         this.y = y;
     }

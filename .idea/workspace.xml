@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="configure blank cells and remove flag function">
+    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="Implemented checking mines in adjacent cells">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Cells.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Cells.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" afterDir="false" />
     </list>
@@ -98,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668451882152</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add numbered cells and display mine functionality">
+      <created>1668467714579</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668467714579</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,6 +126,8 @@
     <MESSAGE value="implemented random coordinate generator and set mine function" />
     <MESSAGE value="implemented flag setting function" />
     <MESSAGE value="configure blank cells and remove flag function" />
-    <option name="LAST_COMMIT_MESSAGE" value="configure blank cells and remove flag function" />
+    <MESSAGE value="add numbered cells and display mine functionality" />
+    <MESSAGE value="Implemented checking mines in adjacent cells" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented checking mines in adjacent cells" />
   </component>
 </project>

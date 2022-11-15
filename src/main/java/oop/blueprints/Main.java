@@ -9,6 +9,7 @@ public class Main {
         int columns = 0;
         int rows = 0;
 
+        // exception handling for dimension inputs
         while(dimensions){
             boolean proceed = true;
 
@@ -27,7 +28,7 @@ public class Main {
             catch (Exception e){
                 proceed = false;
             }
-            if (columns < 0 || rows < 0){
+            if (columns <= 0 || rows <= 0){
                 proceed = false;
             }
 

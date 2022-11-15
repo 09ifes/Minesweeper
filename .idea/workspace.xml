@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="bug fixes">
+    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="fixed exception issue for integers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" afterDir="false" />
@@ -139,7 +139,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668520954323</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="bug fixes">
+      <created>1668524231032</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1668524231032</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fixed exception issue for integers">
+      <created>1668524502067</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1668524502067</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,7 +181,8 @@
     <MESSAGE value="fixed bugs for adjacent checker" />
     <MESSAGE value="refactor functions, added user input validatiion" />
     <MESSAGE value="bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes" />
+    <MESSAGE value="fixed exception issue for integers" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed exception issue for integers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

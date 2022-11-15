@@ -114,8 +114,8 @@ public class Grid {
 
             }
             else {
-                System.out.println("This has already opened, select a different cell");
-                this.gridBuilder();
+                System.out.println("This cell has already been opened, select a different cell");
+                //this.gridBuilder();
             }
         }
         else {
@@ -157,7 +157,7 @@ public class Grid {
         if (cell.isMine){
             this.showMines();
             this.game = false;
-            System.out.println("Game over");
+            System.out.println("Game over, you lose!");
         }
         else if (cell.adjacentMinesCount > 0){
             this.numberedCell(x,y);
@@ -216,14 +216,15 @@ public class Grid {
             cell.isClickable = false;
             cell.isFlag = true;
             cell.appearance = "F  ";
+            this.gridBuilder();
         }
         else if (Objects.equals(cell.state, "flagged")){
             cell.state = "unopened";
             cell.isClickable = true;
             cell.isFlag = false;
             cell.appearance = ".  ";
+            this.gridBuilder();
         }
-        this.gridBuilder();
     }
 
 

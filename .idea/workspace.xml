@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="fixed bugs for adjacent checker">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Minesweeper.java" afterDir="false" />
+    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="refactor functions, added user input validatiion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" afterDir="false" />
@@ -126,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668477763567</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="refactor functions, added user input validatiion">
+      <created>1668509951118</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1668509951118</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -152,6 +158,17 @@
     <MESSAGE value="Implemented checking mines in adjacent cells" />
     <MESSAGE value="adjacent checker refactor" />
     <MESSAGE value="fixed bugs for adjacent checker" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs for adjacent checker" />
+    <MESSAGE value="refactor functions, added user input validatiion" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor functions, added user input validatiion" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

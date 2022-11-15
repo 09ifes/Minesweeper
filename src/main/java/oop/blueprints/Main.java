@@ -27,6 +27,9 @@ public class Main {
             catch (Exception e){
                 proceed = false;
             }
+            if (columns < 0 || rows < 0){
+                proceed = false;
+            }
 
             if (proceed){
                 dimensions = false;

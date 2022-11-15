@@ -71,7 +71,7 @@ public class Grid {
     public void setMines(){
         ArrayList coords;
         Cells cell;
-        int mineNumber = (this.totalCells * 30) / 100;     // number of mines - 30%
+        int mineNumber = (this.totalCells * 20) / 100;     // number of mines - 20%
         // gets coordinates for mines by executing randCoords method x amount of times
         for (int i = 0; i < mineNumber; i++){
             coords = this.randCoords();
@@ -151,7 +151,7 @@ public class Grid {
                 Cells cell = this.cells[column][row].get(0);
                 int n = 0;
                 int[][] adjCoords = {{column-1,row}, {column+1,row}, {column,row-1}, {column,row+1},
-                        {column+1,row+1}, {column-1,row-1}};
+                        {column+1,row+1}, {column-1,row-1}, {column+1,row-1}, {column-1,row+1}};
 
                 // checks if adjacent cells has mine only if coordinates are within grid
                 for (int i = 0; i < adjCoords.length; i++){
@@ -180,7 +180,7 @@ public class Grid {
 
     public void adjacentChecker(int coord_x, int coord_y){
         int[][] adjCoords = {{coord_x-1,coord_y}, {coord_x+1,coord_y}, {coord_x,coord_y-1}, {coord_x,coord_y+1},
-                {coord_x+1,coord_y+1}, {coord_x-1,coord_y-1}};
+                {coord_x+1,coord_y+1}, {coord_x-1,coord_y-1}, {coord_x+1,coord_y-1}, {coord_x-1,coord_y+1}};
 
         for (int i = 0; i < adjCoords.length; i++){
             int x = adjCoords[i][0];
@@ -209,6 +209,7 @@ public class Grid {
                         adjCell.isChecked = true;
                         this.adjacentChecker(x, y);
                     }
+
                     }
             }
         }

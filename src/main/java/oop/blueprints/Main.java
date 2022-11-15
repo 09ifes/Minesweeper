@@ -5,8 +5,8 @@ public class Main {
 
         Grid grid = new Grid(9, 9);
         grid.setMines();
-        grid.setAdjacents();
-        grid.adjacentChecker(4,4);
+       // grid.setAdjacents();
+        //grid.adjacentChecker(4,4);
         grid.gridBuilder();
         //grid.placeFlag(1,2);
         //grid.blankCell(2,4);

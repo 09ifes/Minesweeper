@@ -7,6 +7,7 @@ import java.util.Random;
 public class Grid {
     int width;
     int height;
+    boolean game;
     int totalCells;
     ArrayList<Cells>[][] cells;
 
@@ -35,6 +36,8 @@ public class Grid {
             System.out.print("\n");
         }
         this.totalCells = this.width * this.height;
+        this.setMines();
+        this.setAdjacents();
     }
 
     public void gridBuilder(){
@@ -54,6 +57,72 @@ public class Grid {
             System.out.print("\n");
         }
     }
+
+    public void receiveInputs(int coord_x, int coord_y, String flag){
+        boolean check_x = this.validate_x(coord_x);
+        boolean check_y = this.validate_y(coord_y);
+        boolean check_flag = this.validate_flag(flag);
+        if (check_x || check_y || check_flag)
+            {
+                if (flag == "F"){
+                    this.placeFlag(coord_x, coord_y);
+                }
+                else {
+
+                }
+
+            }
+            else {
+                System.out.println("Please enter valid inputs!");
+            }
+        }
+
+
+
+
+
+    public Boolean validate_x (int x) {
+        if (x >= 0 && x < this.width) {
+            return true;
+        }
+        else return false;
+    }
+
+    public Boolean validate_y (int y){
+        if (y >= 0 && y < this.height){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public Boolean validate_flag(String flag){
+        if (flag == "F" || flag == "NF"){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void determineCell(int x, int y){
+        Cells cell = this.cells[x][y].get(0);
+        if (cell.isMine){
+            this.showMines();
+            this.game = false;
+            System.out.println("Game over");
+        }
+        else if (cell.adjacentMinesCount > 0){
+            this.numberedCell(x,y);
+        }
+        else if (cell.adjacentMinesCount == 0){
+            this.blankCell(x,y);
+        }
+
+
+    }
+
 
     // generates random coordinates
     public ArrayList randCoords(){
@@ -96,29 +165,22 @@ public class Grid {
     // places flag in cell if cell is unopened/unclickable
     public void placeFlag(int coord_x, int coord_y){
         Cells cell = this.cells[coord_x][coord_y].get(0);
-        if (cell.state == "opened" || cell.isClickable == false){
+        if (cell.state == "opened"){
             System.out.println("Cell has already been opened, cannot place flag");
         }
-        else {
+        else if (cell.state == "unopened"){
             cell.state = "flagged";
             cell.isClickable = false;
             cell.appearance = "F  ";
-            this.gridBuilder();
-        }
-    }
-
-    public void removeFlag(int coord_x, int coord_y){
-        Cells cell = this.cells[coord_x][coord_y].get(0);
-        if (cell.state == "flagged"){
-            cell.state = "unopened";
-            cell.isClickable = true;
-            cell.appearance = ".  ";
-            this.gridBuilder();
         }
         else {
-            System.out.println("There is no flag on this cell");
+            cell.state = "unopened";
+            cell.isClickable = true;
+            cell.appearance = "*  ";
         }
+        this.gridBuilder();
     }
+
 
     public void blankCell(int coord_x, int coord_y){
         Cells cell = this.cells[coord_x][coord_y].get(0);
@@ -137,11 +199,18 @@ public class Grid {
         this.gridBuilder();
     }
 
-    public void showMine(int coord_x, int coord_y){
-        Cells cell = this.cells[coord_x][coord_y].get(0);
-        cell.state = "opened";
-        cell.isClickable = false;
-        cell.appearance = "*  ";
+    public void showMines(){
+        Cells cell;
+        for (int row = 0; row < this.height; row++){
+            for (int column = 0; column < this.width; column++){
+                cell = this.cells[column][row].get(0);
+                if (cell.isMine) {
+                    cell.state = "opened";
+                    cell.isClickable = false;
+                    cell.appearance = "*  ";
+                }
+            }
+        }
         this.gridBuilder();
     }
 
@@ -209,13 +278,11 @@ public class Grid {
                         adjCell.isChecked = true;
                         this.adjacentChecker(x, y);
                     }
-
                     }
             }
         }
 
     }
-
     }
 
 

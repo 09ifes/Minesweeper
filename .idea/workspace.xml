@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="refactor functions, added user input validatiion">
+    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="bug fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Main.java" afterDir="false" />
@@ -132,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668509951118</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="bug fixes">
+      <created>1668520954323</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1668520954323</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,7 +166,8 @@
     <MESSAGE value="adjacent checker refactor" />
     <MESSAGE value="fixed bugs for adjacent checker" />
     <MESSAGE value="refactor functions, added user input validatiion" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor functions, added user input validatiion" />
+    <MESSAGE value="bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

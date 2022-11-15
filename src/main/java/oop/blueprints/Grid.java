@@ -1,5 +1,4 @@
 package oop.blueprints;
-
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
@@ -18,13 +17,25 @@ public class Grid {
         this.height = height;
         this.cells = new ArrayList[height][width];
 
-        System.out.print("   ");
+        // sets spacing for grid numbering
+        System.out.print("     ");
         for (int i = 0; i < this.width; i++){
-            System.out.print(i + "  ");
+            if (i > 9){
+                System.out.print(i + " ");
+            }
+            else {
+                System.out.print(i + "  ");
+            }
         }
         System.out.print("\n");
+        // sets spacing for grid numbering
         for (int row = 0; row < this.height; row++){
-            System.out.print(row + "  ");
+            if (row > 9){
+                System.out.print(row + "   ");
+            }
+            else {
+                System.out.print(row + "    ");
+            }
             for (int column = 0; column < this.width; column++){
                 // for each coordinate (column, row), creates new cell object, adds to arraylist
                 Cells cell = new Cells(column, row);
@@ -44,13 +55,23 @@ public class Grid {
     public void gridBuilder(){
         int totalFound = 0;
         System.out.print("\n");
-        System.out.print("   ");
+        System.out.print("    ");             // for spacings
         for (int i = 0; i < this.width; i++){
-            System.out.print(i + "  ");
+            if (i > 9){
+                System.out.print(i + " ");
+            }
+            else {
+                System.out.print(i + "  ");
+            }
         }
         System.out.print("\n");
         for (int row = 0; row < this.height; row++){
-            System.out.print(row + "  ");
+            if (row > 9){
+                System.out.print(row + "  ");
+            }
+            else {
+                System.out.print(row + "   ");
+            }
             for (int column = 0; column < this.width; column++){
                 // for each coordinate (row, column), gets cell from 2d arraylist
                 Cells cell = this.cells[row][column].get(0);
@@ -61,17 +82,19 @@ public class Grid {
             }
             System.out.print("\n");
         }
-        if (totalFound == (this.totalCells - this.mineNumber)){
+        if (totalFound == (this.totalCells - this.mineNumber)){  // when total non-mine opened = total cells - mines
             this.game = false;
             System.out.println("You win");
         }
     }
 
     public void receiveInputs(int coord_x, int coord_y, String flag){
+        // validates inputs
         boolean check_x = this.validate_x(coord_x);
         boolean check_y = this.validate_y(coord_y);
         boolean check_flag = this.validate_flag(flag);
-        if (check_x && check_y && check_flag) {
+
+        if (check_x && check_y && check_flag) {  // if validation succeeds
             Cells cell = this.cells[coord_y][coord_x].get(0);
             if (cell.isClickable) {
                 if (Objects.equals(flag, "F")) {
@@ -128,6 +151,7 @@ public class Grid {
         }
     }
 
+    // when cell is selected, determines if it is a mine, blank, or numbered cell
     public void determineCell(int x, int y){
         Cells cell = this.cells[y][x].get(0);
         if (cell.isMine){

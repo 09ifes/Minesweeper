@@ -115,13 +115,12 @@ public class Grid {
             }
             else {
                 System.out.println("This cell has already been opened, select a different cell");
-                //this.gridBuilder();
             }
         }
         else {
             System.out.println("Please enter valid inputs!");
         }
-        }
+    }
 
 
     public Boolean validate_x (int x) {
@@ -192,13 +191,12 @@ public class Grid {
             cell = this.cells[y][x].get(0);
 
             // sets mine variable of cell objects to 'true'
-            if (cell.isMine){
-                while (cell.isMine){      // if cell already has mine, randomize coords until cell with no mine is found
-                    coords = this.randCoords();
-                    x = (int) coords.get(0);
-                    y = (int) coords.get(1);
-                    cell = this.cells[y][x].get(0);
-                }
+
+            while (cell.isMine){      // if cell already has mine, randomize coords until cell with no mine is found
+                coords = this.randCoords();
+                x = (int) coords.get(0);
+                y = (int) coords.get(1);
+                cell = this.cells[y][x].get(0);
             }
             cell.isMine = true;
         }
@@ -314,7 +312,6 @@ public class Grid {
                     adjCell.isClickable = false;
                     adjCell.isChecked = true;
                     adjCell.appearance = adjCell.adjacentMinesCount + "  ";
-
                 }
                 else {
                     if (!adjCell.isChecked) {

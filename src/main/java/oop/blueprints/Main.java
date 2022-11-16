@@ -18,27 +18,22 @@ public class Main {
             String[] input = sc.nextLine().split(" ");
             try {
                 columns = Integer.parseInt(input[0]);
-            }
-            catch (Exception e){
-                proceed = false;
-            }
-            try {
                 rows = Integer.parseInt(input[1]);
             }
             catch (Exception e){
                 proceed = false;
             }
+            // negative numbers fail validation
             if (columns <= 0 || rows <= 0){
                 proceed = false;
             }
-
+            // no errors/exceptions, exits loop
             if (proceed){
                 dimensions = false;
             }
             else {
                 System.out.println("Please enter valid inputs");
             }
-
         }
 
         Grid grid = new Grid(columns, rows);
@@ -56,17 +51,7 @@ public class Main {
             // handling exceptions from inputs
             try {
                 x = Integer.parseInt(input[0]);
-            }
-            catch (Exception e){
-                proceed = false;
-            }
-            try{
                 y = Integer.parseInt(input[1]);
-            }
-            catch (Exception e) {
-                proceed = false;
-            }
-            try {
                 flag = input[2];
             }
             catch (Exception e){

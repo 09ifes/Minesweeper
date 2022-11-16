@@ -76,7 +76,7 @@ public class Grid {
                 // for each coordinate (row, column), gets cell from 2d arraylist
                 Cells cell = this.cells[row][column].get(0);
                 System.out.print(cell.appearance);
-                if (Objects.equals(cell.state, "opened") && cell.isMine == false){
+                if (Objects.equals(cell.state, "opened") && !cell.isMine){
                     totalFound += 1;
                 }
             }
@@ -122,32 +122,17 @@ public class Grid {
         }
     }
 
-
+    // The 3 methods below return the results (true/false) of the expressions
     public Boolean validate_x (int x) {
-        if (x >= 0 && x < this.width) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return x >= 0 && x < this.width;
     }
 
     public Boolean validate_y (int y){
-        if (y >= 0 && y < this.height){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return y >= 0 && y < this.height;
     }
 
     public Boolean validate_flag(String flag){
-        if (Objects.equals(flag, "F") || Objects.equals(flag, "NF")){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return Objects.equals(flag, "F") || Objects.equals(flag, "NF");
     }
 
     // when cell is selected, determines if it is a mine, blank, or numbered cell
@@ -299,13 +284,8 @@ public class Grid {
             int x = adjCoords[i][0];
             int y = adjCoords[i][1];
 
-            if (x < 0 || x > (this.width - 1)){
-                // do nothing
-            }
-            else if (y < 0 || y > (this.height - 1)){
-               // do nothing
-            }
-            else {
+            // will only check cells that are within the grid
+            if ((x >= 0 && x < (this.width)) && (y >= 0 && y < (this.height))){
                 Cells adjCell = this.cells[y][x].get(0);
                 if (adjCell.adjacentMinesCount > 0) {
                     adjCell.state = "opened";

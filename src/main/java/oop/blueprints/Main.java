@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        boolean dimensions = true;
+        Scanner sc = new Scanner(System.in);        // for taking inputs
+        boolean dimensions = true;                  // variable set to allow exit of the loop
         int columns = 0;
         int rows = 0;
 
@@ -29,7 +29,7 @@ public class Main {
             }
             // no errors/exceptions, exits loop
             if (proceed){
-                dimensions = false;
+                dimensions = false;         // can now exit the loop
             }
             else {
                 System.out.println("Please enter valid inputs");
@@ -39,7 +39,7 @@ public class Main {
         Grid grid = new Grid(columns, rows);
 
         while(grid.game){
-            // set initial values to account for exceptions, to prevent
+            // set initial values to account for exceptions
             int x = 0;
             int y = 0;
             String flag = "";

@@ -38,7 +38,7 @@ public class Grid {
             }
             for (int column = 0; column < this.width; column++){
                 // for each coordinate (column, row), creates new cell object, adds to arraylist
-                Cells cell = new Cells(column, row);
+                Cells cell = new Cells();
 
                 this.cells[row][column] = new ArrayList<>();
                 this.cells[row][column].add(cell);            // adds cell to 2d arraylist

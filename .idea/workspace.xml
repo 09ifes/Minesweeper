@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="refactor - working version" />
+    <list default="true" id="64fdef4e-bc96-41f0-9df2-392acbd099a4" name="Changes" comment="refactor - working version">
+      <change afterPath="$PROJECT_DIR$/src/test/java/CellTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Cells.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Cells.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/blueprints/Grid.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

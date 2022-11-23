@@ -4,11 +4,11 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Grid {
-    int width;
-    int height;
-    boolean game = true;
-    int totalCells;
-    int mineNumber;
+    public int width;
+    public int height;
+    public boolean game = true;
+    public int totalCells;
+    public int mineNumber;
     ArrayList<Cells>[][] cells;
 
     // creates initial grid, all cells set to 'unopened'

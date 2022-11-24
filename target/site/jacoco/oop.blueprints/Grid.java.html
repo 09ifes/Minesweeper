@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Grid.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">minesweeper</a> &gt; <a href="index.source.html" class="el_package">oop.blueprints</a> &gt; <span class="el_source">Grid.java</span></div><h1>Grid.java</h1><pre class="source lang-java linenums">package oop.blueprints;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Random;
+
+public class Grid {
+    public int width;
+    public int height;
+<span class="fc" id="L9">    public boolean game = true;</span>
+    public int totalCells;
+    public int mineNumber;
+    ArrayList&lt;Cells&gt;[][] cells;
+
+    // creates initial grid, all cells set to 'unopened'
+<span class="fc" id="L15">    public Grid(int width, int height){</span>
+<span class="fc" id="L16">        this.width = width;</span>
+<span class="fc" id="L17">        this.height = height;</span>
+<span class="fc" id="L18">        this.cells = new ArrayList[height][width];</span>
+
+        // sets spacing for grid numbering
+<span class="fc" id="L21">        System.out.print(&quot;     &quot;);</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        for (int i = 0; i &lt; this.width; i++){</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">            if (i &gt; 9){</span>
+<span class="fc" id="L24">                System.out.print(i + &quot; &quot;);</span>
+            }
+            else {
+<span class="fc" id="L27">                System.out.print(i + &quot;  &quot;);</span>
+            }
+        }
+<span class="fc" id="L30">        System.out.print(&quot;\n&quot;);</span>
+        // sets spacing for grid numbering
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        for (int row = 0; row &lt; this.height; row++){</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">            if (row &gt; 9){</span>
+<span class="fc" id="L34">                System.out.print(row + &quot;   &quot;);</span>
+            }
+            else {
+<span class="fc" id="L37">                System.out.print(row + &quot;    &quot;);</span>
+            }
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            for (int column = 0; column &lt; this.width; column++){</span>
+                // for each coordinate (column, row), creates new cell object, adds to arraylist
+<span class="fc" id="L41">                Cells cell = new Cells();</span>
+
+<span class="fc" id="L43">                this.cells[row][column] = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L44">                this.cells[row][column].add(cell);            // adds cell to 2d arraylist</span>
+<span class="fc" id="L45">                cell = this.cells[row][column].get(0);        // retrieves cell from arraylist</span>
+<span class="fc" id="L46">                System.out.print(cell.appearance);</span>
+            }
+<span class="fc" id="L48">            System.out.print(&quot;\n&quot;);</span>
+        }
+<span class="fc" id="L50">        this.totalCells = this.width * this.height;</span>
+<span class="fc" id="L51">        this.setMines();</span>
+<span class="fc" id="L52">        this.setAdjacents();</span>
+<span class="fc" id="L53">    }</span>
+
+    public void gridBuilder(){
+<span class="nc" id="L56">        int totalFound = 0;</span>
+<span class="nc" id="L57">        System.out.print(&quot;\n&quot;);</span>
+<span class="nc" id="L58">        System.out.print(&quot;    &quot;);             // for spacings</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        for (int i = 0; i &lt; this.width; i++){</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            if (i &gt; 9){</span>
+<span class="nc" id="L61">                System.out.print(i + &quot; &quot;);</span>
+            }
+            else {
+<span class="nc" id="L64">                System.out.print(i + &quot;  &quot;);</span>
+            }
+        }
+<span class="nc" id="L67">        System.out.print(&quot;\n&quot;);</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        for (int row = 0; row &lt; this.height; row++){</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">            if (row &gt; 9){</span>
+<span class="nc" id="L70">                System.out.print(row + &quot;  &quot;);</span>
+            }
+            else {
+<span class="nc" id="L73">                System.out.print(row + &quot;   &quot;);</span>
+            }
+<span class="nc bnc" id="L75" title="All 2 branches missed.">            for (int column = 0; column &lt; this.width; column++){</span>
+                // for each coordinate (row, column), gets cell from 2d arraylist
+<span class="nc" id="L77">                Cells cell = this.cells[row][column].get(0);</span>
+<span class="nc" id="L78">                System.out.print(cell.appearance);</span>
+<span class="nc bnc" id="L79" title="All 4 branches missed.">                if (Objects.equals(cell.state, &quot;opened&quot;) &amp;&amp; !cell.isMine){</span>
+<span class="nc" id="L80">                    totalFound += 1;</span>
+                }
+            }
+<span class="nc" id="L83">            System.out.print(&quot;\n&quot;);</span>
+        }
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        if (totalFound == (this.totalCells - this.mineNumber)){  // when total non-mine opened = total cells - mines</span>
+<span class="nc" id="L86">            this.game = false;</span>
+<span class="nc" id="L87">            System.out.println(&quot;You win&quot;);</span>
+        }
+<span class="nc" id="L89">    }</span>
+
+    public void receiveInputs(int coord_x, int coord_y, String flag){
+        // validates inputs
+<span class="nc" id="L93">        boolean check_x = this.validate_x(coord_x);</span>
+<span class="nc" id="L94">        boolean check_y = this.validate_y(coord_y);</span>
+<span class="nc" id="L95">        boolean check_flag = this.validate_flag(flag);</span>
+
+<span class="nc bnc" id="L97" title="All 6 branches missed.">        if (check_x &amp;&amp; check_y &amp;&amp; check_flag) {  // if validation succeeds</span>
+<span class="nc" id="L98">            Cells cell = this.cells[coord_y][coord_x].get(0);</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">            if (cell.isClickable) {</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">                if (Objects.equals(flag, &quot;F&quot;)) {</span>
+<span class="nc" id="L101">                    this.placeFlag(coord_x, coord_y);</span>
+                }
+                else {
+<span class="nc" id="L104">                    this.determineCell(coord_x, coord_y);</span>
+                }
+            }
+<span class="nc bnc" id="L107" title="All 2 branches missed.">            else if (cell.isFlag){</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">                if (Objects.equals(flag, &quot;F&quot;)) {</span>
+<span class="nc" id="L109">                    this.placeFlag(coord_x, coord_y);</span>
+                }
+                else {
+<span class="nc" id="L112">                    System.out.println(&quot;This cell can't be selected, remove flag first&quot;);</span>
+                }
+
+            }
+            else {
+<span class="nc" id="L117">                System.out.println(&quot;This cell has already been opened, select a different cell&quot;);</span>
+            }
+<span class="nc" id="L119">        }</span>
+        else {
+<span class="nc" id="L121">            System.out.println(&quot;Please enter valid inputs!&quot;);</span>
+        }
+<span class="nc" id="L123">    }</span>
+
+    // The 3 methods below return the results (true/false) of the expressions
+    public Boolean validate_x (int x) {
+<span class="nc bnc" id="L127" title="All 4 branches missed.">        return x &gt;= 0 &amp;&amp; x &lt; this.width;</span>
+    }
+
+    public Boolean validate_y (int y){
+<span class="nc bnc" id="L131" title="All 4 branches missed.">        return y &gt;= 0 &amp;&amp; y &lt; this.height;</span>
+    }
+
+    public Boolean validate_flag(String flag){
+<span class="nc bnc" id="L135" title="All 4 branches missed.">        return Objects.equals(flag, &quot;F&quot;) || Objects.equals(flag, &quot;NF&quot;);</span>
+    }
+
+    // when cell is selected, determines if it is a mine, blank, or numbered cell
+    public void determineCell(int x, int y){
+<span class="nc" id="L140">        Cells cell = this.cells[y][x].get(0);</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">        if (cell.isMine){</span>
+<span class="nc" id="L142">            this.showMines();</span>
+<span class="nc" id="L143">            this.game = false;</span>
+<span class="nc" id="L144">            System.out.println(&quot;Game over, you lose!&quot;);</span>
+        }
+<span class="nc bnc" id="L146" title="All 2 branches missed.">        else if (cell.adjacentMinesCount &gt; 0){</span>
+<span class="nc" id="L147">            this.numberedCell(x,y);</span>
+        }
+<span class="nc bnc" id="L149" title="All 2 branches missed.">        else if (cell.adjacentMinesCount == 0){</span>
+<span class="nc" id="L150">            this.blankCell(x,y);</span>
+        }
+<span class="nc" id="L152">    }</span>
+
+    // generates random coordinates
+    public ArrayList randCoords(){
+<span class="fc" id="L156">        Random rand_x = new Random();</span>
+<span class="fc" id="L157">        Random rand_y = new Random();</span>
+<span class="fc" id="L158">        int x = rand_x.nextInt(this.width);</span>
+<span class="fc" id="L159">        int y = rand_y.nextInt(this.height);</span>
+
+<span class="fc" id="L161">        ArrayList&lt;Integer&gt; coords = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L162">        coords.add(x);</span>
+<span class="fc" id="L163">        coords.add(y);</span>
+<span class="fc" id="L164">        return coords;</span>
+    }
+
+    public void setMines(){
+        ArrayList coords;
+        Cells cell;
+<span class="fc" id="L170">        this.mineNumber = (this.totalCells * 20) / 100;     // number of mines - 20%</span>
+        // gets coordinates for mines by executing randCoords method x amount of times
+<span class="fc bfc" id="L172" title="All 2 branches covered.">        for (int i = 0; i &lt; this.mineNumber; i++){</span>
+<span class="fc" id="L173">            coords = this.randCoords();</span>
+<span class="fc" id="L174">            int x = (int) coords.get(0);             // converts from object type to int</span>
+<span class="fc" id="L175">            int y = (int) coords.get(1);</span>
+<span class="fc" id="L176">            cell = this.cells[y][x].get(0);</span>
+
+            // sets mine variable of cell objects to 'true'
+
+<span class="fc bfc" id="L180" title="All 2 branches covered.">            while (cell.isMine){      // if cell already has mine, randomize coords until cell with no mine is found</span>
+<span class="fc" id="L181">                coords = this.randCoords();</span>
+<span class="fc" id="L182">                x = (int) coords.get(0);</span>
+<span class="fc" id="L183">                y = (int) coords.get(1);</span>
+<span class="fc" id="L184">                cell = this.cells[y][x].get(0);</span>
+            }
+<span class="fc" id="L186">            cell.isMine = true;</span>
+        }
+<span class="fc" id="L188">    }</span>
+
+
+    // places flag in cell if cell is unopened/unclickable
+    public void placeFlag(int coord_x, int coord_y){
+<span class="nc" id="L193">        Cells cell = this.cells[coord_y][coord_x].get(0);</span>
+<span class="nc bnc" id="L194" title="All 2 branches missed.">        if (Objects.equals(cell.state, &quot;opened&quot;)){</span>
+<span class="nc" id="L195">            System.out.println(&quot;Cell has already been opened, cannot place flag&quot;);</span>
+        }
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        else if (Objects.equals(cell.state, &quot;unopened&quot;)){</span>
+<span class="nc" id="L198">            cell.state = &quot;flagged&quot;;</span>
+<span class="nc" id="L199">            cell.isClickable = false;</span>
+<span class="nc" id="L200">            cell.isFlag = true;</span>
+<span class="nc" id="L201">            cell.appearance = &quot;F  &quot;;</span>
+<span class="nc" id="L202">            this.gridBuilder();</span>
+        }
+<span class="nc bnc" id="L204" title="All 2 branches missed.">        else if (Objects.equals(cell.state, &quot;flagged&quot;)){</span>
+<span class="nc" id="L205">            cell.state = &quot;unopened&quot;;</span>
+<span class="nc" id="L206">            cell.isClickable = true;</span>
+<span class="nc" id="L207">            cell.isFlag = false;</span>
+<span class="nc" id="L208">            cell.appearance = &quot;.  &quot;;</span>
+<span class="nc" id="L209">            this.gridBuilder();</span>
+        }
+<span class="nc" id="L211">    }</span>
+
+
+    public void blankCell(int coord_x, int coord_y){
+<span class="nc" id="L215">        Cells cell = this.cells[coord_y][coord_x].get(0);</span>
+<span class="nc" id="L216">        cell.state = &quot;opened&quot;;</span>
+<span class="nc" id="L217">        cell.isClickable = false;</span>
+<span class="nc" id="L218">        cell.appearance = &quot;0  &quot;;</span>
+<span class="nc" id="L219">        this.adjacentChecker(coord_x, coord_y);</span>
+<span class="nc" id="L220">        this.gridBuilder();</span>
+<span class="nc" id="L221">    }</span>
+
+    public void numberedCell(int coord_x, int coord_y){
+<span class="nc" id="L224">        Cells cell = this.cells[coord_y][coord_x].get(0);</span>
+<span class="nc" id="L225">        cell.state = &quot;opened&quot;;</span>
+<span class="nc" id="L226">        cell.isClickable = false;</span>
+<span class="nc" id="L227">        cell.appearance = cell.adjacentMinesCount + &quot;  &quot;;</span>
+<span class="nc" id="L228">        this.gridBuilder();</span>
+<span class="nc" id="L229">    }</span>
+
+    public void showMines(){
+        Cells cell;
+<span class="nc bnc" id="L233" title="All 2 branches missed.">        for (int row = 0; row &lt; this.height; row++){</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">            for (int column = 0; column &lt; this.width; column++){</span>
+<span class="nc" id="L235">                cell = this.cells[row][column].get(0);</span>
+<span class="nc bnc" id="L236" title="All 2 branches missed.">                if (cell.isMine) {</span>
+<span class="nc" id="L237">                    cell.state = &quot;opened&quot;;</span>
+<span class="nc" id="L238">                    cell.isClickable = false;</span>
+<span class="nc" id="L239">                    cell.appearance = &quot;*  &quot;;</span>
+                }
+            }
+        }
+<span class="nc" id="L243">        this.gridBuilder();</span>
+<span class="nc" id="L244">    }</span>
+
+    public void setAdjacents() {
+<span class="fc bfc" id="L247" title="All 2 branches covered.">        for (int row = 0; row &lt; this.height; row++) {</span>
+<span class="fc bfc" id="L248" title="All 2 branches covered.">            for (int column = 0; column &lt; this.width; column++) {</span>
+<span class="fc" id="L249">                Cells cell = this.cells[row][column].get(0);</span>
+<span class="fc" id="L250">                int n = 0;</span>
+<span class="fc" id="L251">                int[][] adjCoords = {{column-1,row}, {column+1,row}, {column,row-1}, {column,row+1},</span>
+                        {column+1,row+1}, {column-1,row-1}, {column+1,row-1}, {column-1,row+1}};
+
+                // checks if adjacent cells has mine only if coordinates are within grid
+<span class="fc bfc" id="L255" title="All 2 branches covered.">                for (int i = 0; i &lt; adjCoords.length; i++){</span>
+<span class="fc" id="L256">                    int x = adjCoords[i][0];</span>
+<span class="fc" id="L257">                    int y = adjCoords[i][1];</span>
+<span class="fc bfc" id="L258" title="All 4 branches covered.">                    if (x &lt; 0 || x &gt; (this.width - 1)){</span>
+<span class="fc" id="L259">                        n += 0;</span>
+                    }
+<span class="fc bfc" id="L261" title="All 4 branches covered.">                    else if (y &lt; 0 || y &gt; (this.height - 1)){</span>
+<span class="fc" id="L262">                        n += 0;</span>
+                    }
+                    else {
+<span class="fc" id="L265">                        Cells adjCell = this.cells[y][x].get(0);</span>
+<span class="fc bfc" id="L266" title="All 2 branches covered.">                        if (adjCell.isMine){</span>
+<span class="fc" id="L267">                            n += 1;</span>
+                        }
+                        else {
+<span class="fc" id="L270">                            n += 0;</span>
+                        }
+                    }
+                }
+<span class="fc" id="L274">                cell.adjacentMinesCount = n;</span>
+            }
+        }
+<span class="fc" id="L277">    }</span>
+
+    public void adjacentChecker(int coord_x, int coord_y){
+<span class="nc" id="L280">        int[][] adjCoords = {{coord_x-1,coord_y}, {coord_x+1,coord_y}, {coord_x,coord_y-1}, {coord_x,coord_y+1},</span>
+                {coord_x+1,coord_y+1}, {coord_x-1,coord_y-1}, {coord_x+1,coord_y-1}, {coord_x-1,coord_y+1}};
+
+<span class="nc bnc" id="L283" title="All 2 branches missed.">        for (int i = 0; i &lt; adjCoords.length; i++){</span>
+<span class="nc" id="L284">            int x = adjCoords[i][0];</span>
+<span class="nc" id="L285">            int y = adjCoords[i][1];</span>
+
+            // will only check cells that are within the grid
+<span class="nc bnc" id="L288" title="All 8 branches missed.">            if ((x &gt;= 0 &amp;&amp; x &lt; (this.width)) &amp;&amp; (y &gt;= 0 &amp;&amp; y &lt; (this.height))){</span>
+<span class="nc" id="L289">                Cells adjCell = this.cells[y][x].get(0);</span>
+<span class="nc bnc" id="L290" title="All 2 branches missed.">                if (adjCell.adjacentMinesCount &gt; 0) {</span>
+<span class="nc" id="L291">                    adjCell.state = &quot;opened&quot;;</span>
+<span class="nc" id="L292">                    adjCell.isClickable = false;</span>
+<span class="nc" id="L293">                    adjCell.isChecked = true;</span>
+<span class="nc" id="L294">                    adjCell.appearance = adjCell.adjacentMinesCount + &quot;  &quot;;</span>
+                }
+                else {
+<span class="nc bnc" id="L297" title="All 2 branches missed.">                    if (!adjCell.isChecked) {</span>
+<span class="nc" id="L298">                        adjCell.appearance = adjCell.adjacentMinesCount + &quot;  &quot;;</span>
+<span class="nc" id="L299">                        adjCell.state = &quot;opened&quot;;</span>
+<span class="nc" id="L300">                        adjCell.isClickable = false;</span>
+<span class="nc" id="L301">                        adjCell.isChecked = true;</span>
+<span class="nc" id="L302">                        this.adjacentChecker(x, y);</span>
+                    }
+                    }
+            }
+        }
+<span class="nc" id="L307">    }</span>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class GridTests {
 
+    @Test
     public void testGrid(){
         Random rand_x = new Random();
         Random rand_y = new Random();
